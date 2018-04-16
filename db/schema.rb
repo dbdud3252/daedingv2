@@ -12,28 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2018_04_14_124952) do
 
-  create_table "articles", force: :cascade do |t|
-    t.text "contents"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_articles_on_user_id"
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.integer "user_id_id"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id_id"], name: "index_posts_on_user_id_id"
-    t.index [nil], name: "index_posts_on_user_id"
-  end
-
   create_table "submits", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_submits_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
