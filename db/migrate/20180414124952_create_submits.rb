@@ -1,6 +1,6 @@
 class CreateSubmits < ActiveRecord::Migration[5.2]
   def change
-    create_table :submits do |t|
+    create_table :rails submits do |t|
       t.text :title
       t.text :content
       t.integer :user_id
