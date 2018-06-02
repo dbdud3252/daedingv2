@@ -11,11 +11,19 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery3
+//= require popper
+//= require bootstrap
 //= require materialize-sprockets
 //= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-//= require jquery3
-//= require popper
-//= require bootstrap
+
+$(document).ready(function () {
+    var url = window.location;
+    $('ul a[href="' + url + '"]').parent().addClass('active');
+    $('ul a').filter(function () {
+        return this.href == url;
+    }).parent().addClass('active');
+});
