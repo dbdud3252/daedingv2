@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2018_04_14_124952) do
 
   create_table "submits", force: :cascade do |t|
+    t.text "title"
     t.text "content"
     t.integer "user_id"
     t.datetime "created_at", null: false
