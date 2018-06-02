@@ -18,3 +18,18 @@
 .nav-item{
     padding-left: 40px;
 }
+
+
+.navbar {
+	margin-bottom: 0;
+	padding-top: 10px;
+	background: none;
+	border: 0;
+	-moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
+	-o-transition: all .6s; -moz-transition: all .6s; -webkit-transition: all .6s; -ms-transition: all .6s; transition: all .6s;
+}
+
+.topback{
+    background-image: url(/assets/1.jpg);
+    background-size:100% auto;
+}

@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require materialize-sprockets
 //= require bootstrap-sprockets
+//= require jquery.backstretch
 //= require activestorage
 //= require turbolinks
 //= require_tree .
@@ -27,3 +28,4 @@ $(document).ready(function () {
         return this.href == url;
     }).parent().addClass('active');
 });
+
