@@ -19,10 +19,16 @@
     padding-left: 40px;
 }
 
+.nav-link{
+    color: white;
+}
+
 
 .navbar {
 	margin-bottom: 0;
-	padding-top: 10px;
+    padding-top: 15px;
+    padding-left: 80px;
+    padding-right: 80px;
 	background: none;
 	border: 0;
 	-moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
@@ -32,4 +38,60 @@
 .topback{
     background-image: url(/assets/1.jpg);
     background-size:100% auto;
+}
+
+
+
+.btn-warning{
+    color: white;
+    background-color: #CB9F3D;
+}
+
+.form-inline{
+    padding-left: 50px;
+}
+
+.home{
+    padding-top: 50px;
+}
+
+.title{
+    text-align:center;
+    color: white;
+    opacity: 0.5;
+    font-size: calc(max(2px, 2vw));
+}
+
+.number{
+    text-align:center;
+    opacity: 0.9;
+    font-size: calc(max(30px, 4vw));
+     color: white;
+}
+
+
+@media screen and (max-width: 575px) {
+    .switch{
+        display: none; /* PC용 이미지를 보이지 않게 처리 */
+    }
+    .padding{
+        padding-bottom:10%
+    }
+    .containe{
+         padding-bottom:20px;
+    }
+}
+
+@media screen and (min-width:576px){
+     .padding{
+        padding-bottom:50%
+    }
+    .containe{
+         padding-bottom:10%;
+    }
+}
+
+
+.navbar-brand{
+    font-family: 'Pacifico', cursive;
 }
