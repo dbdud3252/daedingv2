@@ -21,10 +21,21 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function () {
+$(document).on('turbolinks:load', function () {
     var url = window.location;
     $('ul a[href="' + url + '"]').parent().addClass('active');
     $('ul a').filter(function () {
         return this.href == url;
     }).parent().addClass('active');
+
+
+    if (window.location.pathname == '/') {
+        //Hide the element.
+        jQuery('.topback').show();
+        jQuery('.fixnav').hide();
+    }
+    else {
+        jQuery('.topback').hide();
+        jQuery('.fixnav').show();
+    }
 });
