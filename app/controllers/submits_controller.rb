@@ -10,6 +10,9 @@ class SubmitsController < ApplicationController
   end
 
   def new
+    @submit = Submit.new
+    @types = Type.all
+    @smalltypes = Smalltype.all
   end
 
   def create

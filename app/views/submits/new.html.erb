@@ -1,21 +1,103 @@
-<div class="container">
-  <div class="row">
-    <div class="card col s12">
-      <div class="card-content">
-        <div class="card-title">새 글 작성하기</div>
-        <%= form_tag "/submits" do %>
-          <div class="input-field">
-            <%= text_area_tag :title, nil, class: "materialize-textarea", placeholder: "제목" %>
+<%= stylesheet_link_tag "nav.css" %>
+
+<section class="design-process-section" id="process-tab">
+  <div class="container">
+    <div class="row">
+      <div class> 
+      <%= form_for @submit, url: {action: "create"} do |f| %>
+        <ul class="nav nav-tabs process-model more-icon-preocess" role="tablist">
+          <li role="presentation" class="active">
+            <%= link_to("#type", data: {toggle: "tab"}, aria: {controls: "type"}, role: "tab") do %>
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <p>분야 선택</p>
+            <% end %>
+            </li>
+          <li role="presentation">
+            <%= link_to("#smalltype", data: {toggle: "tab"}, aria: {controls: "smalltype"}, role: "tab") do %>
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                <p>상세 분야</p>
+            <% end %>
+          </li>
+          <li role="presentation"><a href="#guide" aria-controls="guide" role="tab" data-toggle="tab">
+          <i class="fa fa-info" aria-hidden="true"></i>
+            <p>가이드 확인</p>
+            </a></li>
+          <li role="presentation"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">
+          <i class="fa fa-edit" aria-hidden="true"></i>
+            <p>상세 정보 입력</p>
+            </a></li>
+          <li role="presentation"><a href="#complete" aria-controls="complete" role="tab" data-toggle="tab">
+          <i class="fa fa-check" aria-hidden="true"></i>
+            <p>등록 완료</p>
+            </a></li>
+        </ul>
+        <!-- end design process steps--> 
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="type">
+            <div class="design-process-content">
+              <h3 class="semi-bold">분야 선택</h3>
+              <div>
+                <p>
+                
+                <%= f.label "분야를 선택해주세요:" %>
+                <%= f.select :type_id, options_for_select(@types.collect { |type| [type.name.titleize, type.id] }, 1), {}, { id: 'types_select' } %>
+                
+                </p>
+               </div>
+             </div>
           </div>
-          <div class="input-field">
-            <%= text_area_tag :content, nil, class: "materialize-textarea", placeholder: "내용" %>
+          <div role="tabpanel" class="tab-pane" id="smalltype">
+            <div class="design-process-content">
+              <h3 class="semi-bold">세부 분야</h3>
+                <p>
+                    <%= f.label "세부 분야를 선택해주세요:" %>
+                    
+                    <% @smalltypes.each do |s| %>
+                      <div id="<%= s.id %>" class="smalltypes <%= (s.type_id == Type.first.id) ? "" : "hidden" %>" typeid=<%= s.type_id %>>
+                        <%= f.radio_button 'smalltype', s.id %>
+                        <%= f.label "smalltype_#{s.id}", s.name %>
+                      </div>
+                    <% end %>
+                </p>
+              </div>
           </div>
 
-          <div class="input-field">
-            <%= button_tag "작성하기", class: "btn" %>
+          <div role="tabpanel" class="tab-pane" id="guide">
+            <div class="design-process-content">
+              <h3 class="semi-bold">가이드 확인</h3>
+              <p>상세 정보 입력 전, 가이드를 확인하세요!</p>              
+            </div>
           </div>
+
+          <div role="tabpanel" class="tab-pane" id="info">
+            <div class="design-process-content">
+              <h3 class="semi-bold">상세 정보 입력</h3>
+              
+                <div class="input-field">
+                    <%= text_area_tag :title, nil, class: "materialize-textarea", placeholder: "제목" %>
+                </div>
+                <div class="input-field">
+                    <%= text_area_tag :content, nil, class: "materialize-textarea", placeholder: "내용" %>
+                </div>
+
+                <div class="input-field">
+                    <%= button_tag "작성하기", class: "btn" %>
+                </div>
+              
+            </div>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane" id="complete">
+            <div class="design-process-content">
+              <h3>등록 완료</h3>
+              <p>아래를 누르면 등록이 완료됩니다! </p>
+
+              <%= f.submit "Go!" %>
+          </div>
+        </div>
         <% end %>
       </div>
     </div>
   </div>
-</div>
+</section>

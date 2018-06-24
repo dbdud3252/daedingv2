@@ -38,4 +38,29 @@ $(document).on('turbolinks:load', function () {
         jQuery('.topback').hide();
         jQuery('.fixnav').show();
     }
+
+
+
+
+    $("#types_select").change(function (e) {
+        //e.target.value
+        e.preventDefault();
+        $(".smalltypes").each(function (index, div) {
+            $(div).removeClass("hidden");
+            if ($(div).attr('typeid') != e.target.value.toString())
+                $(div).addClass("hidden");
+        });
+    });
+
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var href = $(e.target).attr('href');
+        var $curr = $(".process-model  a[href='" + href + "']").parent();
+
+        $('.process-model li').removeClass();
+
+        $curr.addClass("active");
+        $curr.prevAll().addClass("visited");
+    });
+
 });
+

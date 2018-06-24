@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_14_124952) do
+ActiveRecord::Schema.define(version: 2018_06_24_143323) do
+
+  create_table "smalltypes", force: :cascade do |t|
+    t.string "name"
+    t.integer "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type_id"], name: "index_smalltypes_on_type_id"
+  end
 
   create_table "submits", force: :cascade do |t|
     t.text "title"
@@ -18,7 +26,17 @@ ActiveRecord::Schema.define(version: 2018_04_14_124952) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "type_id"
+    t.integer "smalltype_id"
+    t.date "duedate"
+    t.integer "price"
     t.index ["user_id"], name: "index_submits_on_user_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
