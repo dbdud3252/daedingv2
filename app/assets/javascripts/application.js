@@ -22,6 +22,13 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function () {
+
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+
+
+
     var url = window.location;
     $('ul a[href="' + url + '"]').parent().addClass('active');
     $('ul a').filter(function () {
@@ -38,7 +45,6 @@ $(document).on('turbolinks:load', function () {
         jQuery('.topback').hide();
         jQuery('.fixnav').show();
     }
-
 
 
 

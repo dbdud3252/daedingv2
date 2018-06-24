@@ -6,7 +6,9 @@ class SubmitsController < ApplicationController
   def index
     @submits = Submit.all.order('created_at desc')
     @submits_count = current_user.submits.length
-    
+    @types = Type.all  
+    @smalltypes = Smalltype.all 
+    @users = User.all  
   end
 
   def new
@@ -16,9 +18,14 @@ class SubmitsController < ApplicationController
   end
 
   def create
-    new_submit = Submit.new(user_id: current_user.id, title: params[:title], content: params[:content])
+    submit = current_user.submits.create! type_id: params[:type_id], 
+      smalltype_id: params[:smalltype_id], 
+      duedate: params[:duedate], 
+      price: params[:price],
+      content: params[:content],
+      title: params[:title]
 
-    if new_submit.save
+    if submit.save
       redirect_to submits_path
     else
       redirect_to new_submit_path

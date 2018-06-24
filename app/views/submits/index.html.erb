@@ -1,6 +1,82 @@
-<h1>Submit#index</h1>
-<p>Find me in app/views/submit/index.html.erb</p>
+
 <div class="container">
+<div class="row" style="margin-top:50px;">
+    <div class="col-1">
+    </div>
+    <div class="col-10">
+    <h2>프로젝트</h2>
+    <div class="row-11" style="background:#57b87b; height:2px; w">
+    </div>
+    </div>
+    <div class="col-1">
+    </div>
+</div>
+    <% @submits.each do |submit| %> 
+        <div class="row" style="margin-top:30px">
+            <div class='col-1'>
+            </div>   
+            <% type = submit.type_id ? @types.find(submit.type_id).name : '없음' %>
+            <% smalltype = submit.smalltype_id ? @smalltypes.find(submit.smalltype_id).name : '없음' %>
+            <% user = submit.user ? submit.user : '없음' %>
+            <div class="col-10" >
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                            <div class="row">
+                                <div class="col">
+                                <span class="card-title" style="font-size:18pt"><%=submit.title%></span>
+                                <span class="badge badge-success">모집중</span>
+                                </div>
+                            </div>
+                             <div class="row" style="margin-top:10px">
+                                <div class="col-4">
+                                <div class="row">
+                                <div class="col-4">
+                                <i class="fas fa-dollar-sign"></i>  단가 
+                                </div>
+                                <div class="col-8">
+                                <h5><%=submit.price%>원</h5>
+                                </div>
+                                </div>
+                                </div>
+                                <div class="col-7">
+                                <div class="row" style="margin-bottom:10px">
+                                <button type="button" class="btn btn-outline-info btn-sm"><%= type %> > <%= smalltype %></button>
+                                </div>
+                                <div class="row">
+                                <p><i class="fas fa-chevron-circle-right"></i>  상세 설명: <%=submit.content%></p>
+                                </div>
+                                </div>
+                            </div>
+                        
+                            </div>
+                            <div class="col-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                        <i class="fas fa-user-circle"></i>
+                                        <%=user.name %></h4>
+                                        <p class="card-text"> <%=user.email %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+             </div>
+             <div class='col-1'>
+             </div>   
+        </div>
+    <% end %>
+        
+
+
+    </div>
+    <div class='col-1'>
+    </div>
+
+
     <div class="row">
         <div class="col s12 m4">
             <div class="card">
@@ -23,7 +99,7 @@
                 <div class="card">
                     <div class="card-content">
                         <span class="card-title"><%= submit.user.name %></span>
-                        <span><%= submit.created_at %></span>
+                        <span><%= submit.created_at.in_time_zone("Seoul") %></span>
                         <p><%= submit.title %></p>
                         <p><%= submit.content %></p>
                     </div>
